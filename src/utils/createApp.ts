@@ -1,7 +1,9 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import session from 'express-session';
+import passport from 'passport';
 import routes from '../routes';
+require('../strategies/discord')
 
 export function createApp(): Express {
     const app = express();
@@ -26,6 +28,9 @@ export function createApp(): Express {
             },
         }),
     );
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.use('/api', routes);
     return app;
