@@ -4,7 +4,7 @@ import { VerifyCallback } from 'passport-oauth2';
 import { User } from '../database/schemas';
 
 passport.serializeUser((user: any, done) => {
-    return done(null, user.id)
+    return done(null, user.id);
 });
 
 passport.deserializeUser(async (id: string, done) => {
@@ -15,7 +15,7 @@ passport.deserializeUser(async (id: string, done) => {
         console.log(error);
         return done(error, null);
     }
-})
+});
 
 passport.use(
     new Strategy(
@@ -34,7 +34,7 @@ passport.use(
                     { accessToken, refreshToken },
                     { new: true },
                 );
-                console.log("🚀 ~ existingUser:", existingUser)
+                console.log('🚀 ~ existingUser:', existingUser);
                 if (existingUser) {
                     return done(null, existingUser);
                 }
