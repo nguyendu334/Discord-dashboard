@@ -5,7 +5,7 @@ import cors from 'cors';
 import session from 'express-session';
 import passport from 'passport';
 import routes from '../routes';
-require('../strategies/discord')
+require('../strategies/discord');
 
 export function createApp(): Express {
     const app = express();
