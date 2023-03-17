@@ -4,6 +4,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import passport from 'passport';
+import store from 'connect-mongo';
 import routes from '../routes';
 require('../strategies/discord');
 
@@ -28,6 +29,9 @@ export function createApp(): Express {
                 secure: false,
                 maxAge: 1000 * 60 * 60 * 24 * 7,
             },
+            store: store.create({
+                mongoUrl: 'mongodb://localhost:27017/discord_dashboard',
+            }),
         }),
     );
 
