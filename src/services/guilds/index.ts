@@ -26,3 +26,9 @@ export async function getMutuaGuildsService(id: string) {
 
     return adminUserGuilds.filter((guild) => botGuilds.some((botGuild) => botGuild.id === guild.id));
 }
+
+export function getGuildService(id: string) { 
+    return axios.get<PartialGuild>(`${DISCORD_API_URL}/guilds/${id}`, {
+        headers: { Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}` },
+    });
+}
